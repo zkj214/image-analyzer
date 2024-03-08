@@ -8,7 +8,7 @@ from datetime import date
 
 
 app=Flask(__name__)
-app.config["SECRET_KEY"]="willbeinDubai"
+app.config["SECRET_KEY"]=os.environ.get("FLASK_KEY")
 
 upload_dir="static/images/"
 
@@ -92,4 +92,4 @@ def home():
 
 
 if __name__=="__main__":
-    app.run(debug=True)
+    app.run(debug=False)
