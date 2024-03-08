@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% block title %}Image Color Palette{% endblock %}
+
+{% block content %}
+<div class="wrapper">
+    <div class="container">
+        <h1>Welcome to Image Analyzer</h1>
+        <p>
+            Upload an image and this site will tell you the top 10 most used colors along with their hex codes.
+            If two colors appear same number of times, both will be shown here.
+        </p>
+        {% with messages = get_flashed_messages() %}
+        {% if messages: %}
+            {% for message in messages: %}
+            <p class="warning">{{message}}</p>
+            {% endfor %}
+        {% endif %}
+        {% endwith %}
+        <div class="uploader">
+        <form action=""  method="post" enctype="multipart/form-data">
+            <input type="file" name="file" required>
+            <button type="submit" class="upload_btn"  name="upload">Upload Image</button>
+        </form>
+            </div>
+        {%  if display_img: %}
+        <img src="{{image}}" width="500" height="500">
+        <div class="main">
+            <h2>Top 10  Colors From Your Image</h2>
+            <table>
+                <th>Color Code</th><th style="float:right">Percentage</th>
+            </table>
+            {% for i in range(10): %}
+            <div class="pair">
+                    <div class="color-box" ></div>
+                    <div class="color-box-value" style="background-color: {{ color_list[i] }};"> {{i+1}}: {{color_list[i]}}
+                        <span class="percent" style="background-color: {{ color_list[i] }};">{{percent_list[i]}}%</span></div>
+            </div>
+            {% endfor %}
+        </div>
+        {% endif %}
+    </div>
+</div>
+{% include "footer.html" %}
+{% endblock %}
