@@ -44,17 +44,17 @@ def home():
             for rgb in column:
                 Rgb = tuple(rgb)
                 if Rgb not in unique_colors:
-                    unique_colors[Rgb]=1
+                    unique_colors[Rgb]=1 #insert into the dictionary with a value of 1
                 else:
-                    unique_colors[Rgb] += 1
+                    unique_colors[Rgb] += 1 #update the value by incrementing
 
-        sorted_unique_colors = sorted(unique_colors.items(), key=lambda color_tuple: color_tuple[1], reverse=True)
+        sorted_unique_colors = sorted(unique_colors.items(), key=lambda item_tuple: item_tuple[1], reverse=True)
         print(sorted_unique_colors)
 
         colors_dict = dict(sorted_unique_colors)
         print(colors_dict)
 
-        top_10_colors=list(colors_dict)[0:10]
+        top_10_colors=list(colors_dict.keys())[0:10]
         top_10_values = list(colors_dict.values())[0:10]
         total_values=sum(list(colors_dict.values()))
 
@@ -85,7 +85,7 @@ def home():
 
             return render_template("index.html",image=file_path,display_img=True,color_list=hex,year=current_year,percent_list=percent)
         else:
-            flash("Ooops! Wrong file. Please upload an image.")
+            flash("Oops! Wrong file. Please upload an image.")
             return redirect(url_for("home"))
 
     return render_template("index.html",year=current_year)
