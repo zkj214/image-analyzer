@@ -85,7 +85,7 @@ def home():
 
             return render_template("index.html",image=file_path,display_img=True,color_list=hex,year=current_year,percent_list=percent)
         else:
-            flash("Wrong file. Please upload an image.")
+            flash("Ooops! Wrong file. Please upload an image.")
             return redirect(url_for("home"))
 
     return render_template("index.html",year=current_year)
