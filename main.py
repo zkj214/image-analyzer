@@ -49,7 +49,7 @@ def home():
                     unique_colors[Rgb] += 1 #update the value by incrementing
 
         sorted_unique_colors = sorted(unique_colors.items(), key=lambda item_tuple: item_tuple[1], reverse=True)
-        print(sorted_unique_colors)
+        print(sorted_unique_colors) #the output is a list
 
         colors_dict = dict(sorted_unique_colors)
         print(colors_dict)
